@@ -50,8 +50,8 @@ A countdown will be shown on the LEDs to signal to the player when to make his o
   Reload | Reload | Both gain a bullet
   Shoot | Duck | P1 lose bullet
   Duck | Shoot | P2 lose bullet
-  Shoot | Reload | P1 lose bullet, P2 lose life
-  Reload | Shoot | P1 lose life, P2 lose bullet
+  Shoot | Reload | P1 lose bullet, P2 lose life and gain bullet
+  Reload | Shoot | P1 lose life and gain bullet, P2 lose bullet
   Duck | Reload | P2 gains bullet
   Reload | Duck | P1 gains bullet
 
@@ -132,7 +132,7 @@ A ***winner*** will be announced on the seven-segment display when one player ha
      * d &#8594; Duck
      * \- &#8594; Idle (make an invalid decision)
 7. Continue making moves using the keyboard each round and monitoring the bullet count, life count, and moves.
-8. When either the player or computer reaches zero lives, a sound will indicate that someone has won the game.
+8. When either the player or computer reaches zero lives, a sound (w/ headphone jack) will indicate that someone has won the game.
            
            
 <a name="code_structure"></a>     
@@ -157,7 +157,7 @@ A ***winner*** will be announced on the seven-segment display when one player ha
     + `set_roundtime.v`
     + `bullet_fsm.v` &#8594; module that outputs the number of bullets of each player
     + `display_bulletcount.v`
-    + `simple_computer.v` 
+    + `simple_computer.v` &#8594; makes a choice based on bullet counts
         + `random_number.v` &#8594; module that generates random number that will determine the computer's move
              * `lfsr.v`
                   * `flip_flop.v`
@@ -173,7 +173,7 @@ A ***winner*** will be announced on the seven-segment display when one player ha
 
     
 <details>
-<summary> Top Module w/o Keyboard (using buttons instead)</summary> 
+<summary> Top Module w/o Keyboard </summary> 
            
 *Additionally, these are the modules used to implement the game using push buttons. We implemented this incase the keyboard would not work. They keyboard ended up working and we decided to use that to receive inputs. We included all the files for our design with buttons just to show our process and work.*
 
